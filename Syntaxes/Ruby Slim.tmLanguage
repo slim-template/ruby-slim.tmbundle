@@ -12,7 +12,7 @@
 	<key>foldingStopMarker</key>
 	<string>^\s*$</string>
 	<key>keyEquivalent</key>
-	<string>^~H</string>
+	<string>^~S</string>
 	<key>name</key>
 	<string>Ruby Slim</string>
 	<key>patterns</key>
