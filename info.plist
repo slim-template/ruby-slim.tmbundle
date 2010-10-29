@@ -2,7 +2,7 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-  <key>contactEmail</key>
+	<key>contactEmail</key>
 	<string>ifredwu@gmail.com</string>
 	<key>contactName</key>
 	<string>Fred Wu</string>
@@ -23,7 +23,8 @@
 			<string>7ED0FE44-DE8C-46B8-A242-54D509FF8546</string>
 			<string>4CD62CA6-77A0-432B-9168-F71D1D9F6C2D</string>
 			<string>4A5BB3B4-1FD0-4784-8277-09D61641B3D0</string>
-			<string>321C8693-2C25-4177-BDDA-6F6A450C5AE0</string>
+			<string>------------------------------------</string>
+			<string>C1AEBFAD-F040-446C-9C4C-F44C5ECA2E4B</string>
 		</array>
 		<key>submenus</key>
 		<dict>
@@ -63,9 +64,10 @@
 					<string>DA1334EB-1456-4A41-B374-912458770B65</string>
 					<string>9DDEC8A9-F3F2-4CCB-89DD-677D56916F28</string>
 					<string>4A777307-F162-43A1-90D3-7D5DCAF31D22</string>
+					<string>321C8693-2C25-4177-BDDA-6F6A450C5AE0</string>
 				</array>
 				<key>name</key>
-				<string>Tables</string>
+				<string>Tables &amp; Columns</string>
 			</dict>
 			<key>4CD62CA6-77A0-432B-9168-F71D1D9F6C2D</key>
 			<dict>
@@ -212,6 +214,7 @@
 		<string>088A0002-3883-4218-82AA-BC032695F61E</string>
 		<string>E6C67BE8-9E78-4351-A7BA-23594BC43EE6</string>
 		<string>82AC28A9-6FFF-48C3-9BC0-D4B365918AE5</string>
+		<string>C1AEBFAD-F040-446C-9C4C-F44C5ECA2E4B</string>
 		<string>36302CC1-1E76-4910-B7B6-F1915EBBA0D3</string>
 	</array>
 	<key>uuid</key>
