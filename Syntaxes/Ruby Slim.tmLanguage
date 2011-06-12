@@ -164,7 +164,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>^\s*(?==|-|~)</string>
+			<string>^\s*(?==='?|='?|-|~)</string>
 			<key>end</key>
 			<string>$</string>
 			<key>patterns</key>
@@ -207,7 +207,7 @@
 		<key>rubyline</key>
 		<dict>
 			<key>begin</key>
-			<string>=|-|~</string>
+			<string>=='?|='?|-|~</string>
 			<key>contentName</key>
 			<string>source.ruby.embedded.slim</string>
 			<key>end</key>
