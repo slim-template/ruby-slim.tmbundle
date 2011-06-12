@@ -217,21 +217,19 @@
 			<key>match</key>
 			<string>(\|)\s*\n</string>
 		</dict>
-		<key>ruby-interpolation</key>
+		<key>embedded-ruby</key>
 		<dict>
 			<key>begin</key>
 			<string>#{</string>
-			<key>contentName</key>
-			<string>source.ruby.embedded.slim</string>
 			<key>end</key>
 			<string>}</string>
 			<key>name</key>
-			<string>meta.tag.any.html</string>
+			<string>source.ruby.embedded.html</string>
 			<key>patterns</key>
 			<array>
 				<dict>
 					<key>include</key>
-					<string>source.ruby.rails</string>
+					<string>source.ruby</string>
 				</dict>
 			</array>
 		</dict>
@@ -306,7 +304,7 @@
 			<array>
 				<dict>
 					<key>include</key>
-					<string>#embedded-code</string>
+					<string>#embedded-ruby</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -342,7 +340,7 @@
 			<array>
 				<dict>
 					<key>include</key>
-					<string>#embedded-code</string>
+					<string>#embedded-ruby</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -409,7 +407,7 @@
 					<array>
 						<dict>
 							<key>include</key>
-							<string>#embedded-code</string>
+							<string>#embedded-ruby</string>
 						</dict>
 						<dict>
 							<key>include</key>
@@ -446,7 +444,7 @@
 					<array>
 						<dict>
 							<key>include</key>
-							<string>#embedded-code</string>
+							<string>#embedded-ruby</string>
 						</dict>
 						<dict>
 							<key>include</key>
