@@ -70,7 +70,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>^\s*(?=[a-zA-Z]+ )</string>
+			<string>^\s*(?=[.#]?[\w]*[.#_-]*[\w:]+ )</string>
 			<key>end</key>
 			<string>$</string>
 			<key>patterns</key>
@@ -83,15 +83,10 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>^\s*(?:(([\w:]+))|(?=\.|#))</string>
+			<string>^\s*([.#]?[\w]*[.#_-]*[\w:]+)</string>
 			<key>captures</key>
 			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.tag.slim</string>
-				</dict>
-				<key>2</key>
+				<key>0</key>
 				<dict>
 					<key>name</key>
 					<string>entity.name.tag.slim</string>
@@ -101,18 +96,6 @@
 			<string>$|(?!\.|#|\{|\[|=|-|~|/)</string>
 			<key>patterns</key>
 			<array>
-				<dict>
-					<key>match</key>
-					<string>\.[\w-]+</string>
-					<key>name</key>
-					<string>entity.name.tag.class.slim</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>#[\w-]+</string>
-					<key>name</key>
-					<string>entity.name.tag.id.slim</string>
-				</dict>
 				<dict>
 					<key>begin</key>
 					<string>\{(?=.*\}|.*\|\s*$)</string>
@@ -229,7 +212,7 @@
 			<array>
 				<dict>
 					<key>include</key>
-					<string>source.ruby</string>
+					<string>source.ruby.rail</string>
 				</dict>
 			</array>
 		</dict>
@@ -263,6 +246,15 @@
 					<string>invalid.illegal.bad-ampersand.html</string>
 				</dict>
 			</array>
+		</dict>
+		<key>interpolated-ruby</key>
+		<dict>
+			<key>begin</key>
+			<string>=(?=\b)</string>
+			<key>end</key>
+			<string>\s|\w$</string>
+			<key>name</key>
+			<string>source.ruby.embedded.html</string>
 		</dict>
 		<key>rubyline</key>
 		<dict>
@@ -382,7 +374,7 @@
 		<key>tag-generic-attribute</key>
 		<dict>
 			<key>match</key>
-			<string>\b([a-zA-Z\-:]+)</string>
+			<string>[\w.#:-]+</string>
 			<key>name</key>
 			<string>entity.other.attribute-name.html</string>
 		</dict>
@@ -504,6 +496,10 @@
 				<dict>
 					<key>include</key>
 					<string>#string-single-quoted</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#interpolated-ruby</string>
 				</dict>
 			</array>
 		</dict>
