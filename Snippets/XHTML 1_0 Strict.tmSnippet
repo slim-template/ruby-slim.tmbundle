@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>! doctype Strict</string>
+	<string>doctype strict</string>
 	<key>name</key>
 	<string>XHTML 1.0 Strict</string>
 	<key>scope</key>
