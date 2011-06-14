@@ -200,6 +200,54 @@
 			<key>match</key>
 			<string>(\|)\s*\n</string>
 		</dict>
+		<key>delimited-ruby-a</key>
+		<dict>
+			<key>begin</key>
+			<string>=\(</string>
+			<key>end</key>
+			<string>\)</string>
+			<key>name</key>
+			<string>source.ruby.embedded.slim</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>source.ruby.rails</string>
+				</dict>
+			</array>
+		</dict>
+		<key>delimited-ruby-b</key>
+		<dict>
+			<key>begin</key>
+			<string>=\[</string>
+			<key>end</key>
+			<string>\]</string>
+			<key>name</key>
+			<string>source.ruby.embedded.slim</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>source.ruby.rails</string>
+				</dict>
+			</array>
+		</dict>
+		<key>delimited-ruby-c</key>
+		<dict>
+			<key>begin</key>
+			<string>=\{</string>
+			<key>end</key>
+			<string>\}</string>
+			<key>name</key>
+			<string>source.ruby.embedded.slim</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>source.ruby.rails</string>
+				</dict>
+			</array>
+		</dict>
 		<key>embedded-ruby</key>
 		<dict>
 			<key>begin</key>
@@ -500,6 +548,18 @@
 				<dict>
 					<key>include</key>
 					<string>#interpolated-ruby</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#delimited-ruby-a</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#delimited-ruby-b</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#delimited-ruby-c</string>
 				</dict>
 			</array>
 		</dict>
