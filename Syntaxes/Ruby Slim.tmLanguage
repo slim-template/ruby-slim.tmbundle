@@ -70,7 +70,15 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>^\s*(?=[.#]?[\w.#_]+ )</string>
+			<string>^\s*([.#]?[\w.#_]+ )</string>
+			<key>captures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.tag.slim</string>
+				</dict>
+			</dict>
 			<key>end</key>
 			<string>$</string>
 			<key>patterns</key>
@@ -422,7 +430,7 @@
 		<key>tag-generic-attribute</key>
 		<dict>
 			<key>match</key>
-			<string>[\w.#:-]+</string>
+			<string>[\w.#:-]+=</string>
 			<key>name</key>
 			<string>entity.other.attribute-name.html</string>
 		</dict>
