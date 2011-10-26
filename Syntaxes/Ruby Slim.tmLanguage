@@ -70,10 +70,10 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>^\s*([.#]?[\w.#_]+ )</string>
+			<string>^\s*([.#]?[\w.#_]+)</string>
 			<key>captures</key>
 			<dict>
-				<key>0</key>
+				<key>1</key>
 				<dict>
 					<key>name</key>
 					<string>entity.name.tag.slim</string>
