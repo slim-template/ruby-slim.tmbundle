@@ -2,6 +2,14 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>fileTypes</key>
+	<array>
+		<string>slim</string>
+	</array>
+	<key>foldingStartMarker</key>
+	<string>^\s*([-%#\:\.\w\=].*)\s$</string>
+	<key>foldingStopMarker</key>
+	<string>^\s*$</string>
 	<key>keyEquivalent</key>
 	<string>^~S</string>
 	<key>name</key>
@@ -571,6 +579,8 @@
 			</array>
 		</dict>
 	</dict>
+	<key>scopeName</key>
+	<string>text.slim</string>
 	<key>uuid</key>
 	<string>36302CC1-1E76-4910-B7B6-F1915EBBA0D3</string>
 </dict>
