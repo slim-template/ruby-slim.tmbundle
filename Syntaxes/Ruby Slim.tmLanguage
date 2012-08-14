@@ -81,25 +81,12 @@
 			</array>
 		</dict>
 		<dict>
-			<key>begin</key>
-			<string>^\s*([.#]?[\w.#_-]+)</string>
-			<key>captures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>entity.name.tag.slim</string>
-				</dict>
-			</dict>
-			<key>end</key>
-			<string>$</string>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>include</key>
-					<string>#tag-stuff</string>
-				</dict>
-			</array>
+			<key>include</key>
+			<string>#inline-html-tag</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>#normal-html-tag</string>
 		</dict>
 		<dict>
 			<key>begin</key>
@@ -302,6 +289,32 @@
 				</dict>
 			</array>
 		</dict>
+		<key>inline-html-tag</key>
+		<dict>
+			<key>begin</key>
+			<string>:?\s*([.#]?[\w.#_-]+:)</string>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.tag.slim</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>$</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#normal-inline-html-tag</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#tag-stuff</string>
+				</dict>
+			</array>
+		</dict>
 		<key>interpolated-ruby</key>
 		<dict>
 			<key>begin</key>
@@ -310,6 +323,50 @@
 			<string>\s|\w$</string>
 			<key>name</key>
 			<string>source.ruby.embedded.html</string>
+		</dict>
+		<key>normal-html-tag</key>
+		<dict>
+			<key>begin</key>
+			<string>^\s*([.#]?[\w.#_-]+)</string>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.tag.slim</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>$</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#tag-stuff</string>
+				</dict>
+			</array>
+		</dict>
+		<key>normal-inline-html-tag</key>
+		<dict>
+			<key>begin</key>
+			<string>([.#]?[\w.#_-]+\s)</string>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.tag.slim</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>$</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#tag-stuff</string>
+				</dict>
+			</array>
 		</dict>
 		<key>rubyline</key>
 		<dict>
@@ -536,6 +593,10 @@
 		<dict>
 			<key>patterns</key>
 			<array>
+				<dict>
+					<key>include</key>
+					<string>#inline-html-tag</string>
+				</dict>
 				<dict>
 					<key>include</key>
 					<string>#tag-id-attribute</string>
