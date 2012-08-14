@@ -2,15 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>fileTypes</key>
-	<array>
-		<string>slim</string>
-		<string>sass</string>
-	</array>
-	<key>foldingStartMarker</key>
-	<string>^\s*([-%#\:\.\w\=].*)\s$</string>
-	<key>foldingStopMarker</key>
-	<string>^\s*$</string>
 	<key>keyEquivalent</key>
 	<string>^~S</string>
 	<key>name</key>
@@ -70,7 +61,20 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>^\s*([.#]?[\w.#_]+[-]?[\w.#_]+)</string>
+			<string>^\s*(?===|=|-|~)</string>
+			<key>end</key>
+			<string>$</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#rubyline</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>begin</key>
+			<string>^\s*([.#]?[\w.#_-]+)</string>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
@@ -168,19 +172,6 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>^\s*(?==='?|='?|-|~)</string>
-			<key>end</key>
-			<string>$</string>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>include</key>
-					<string>#rubyline</string>
-				</dict>
-			</array>
-		</dict>
-		<dict>
-			<key>begin</key>
 			<string>^\s*(?=\||')</string>
 			<key>end</key>
 			<string>$</string>
@@ -268,7 +259,7 @@
 			<array>
 				<dict>
 					<key>include</key>
-					<string>source.ruby.rail</string>
+					<string>source.ruby.rails</string>
 				</dict>
 			</array>
 		</dict>
@@ -315,7 +306,7 @@
 		<key>rubyline</key>
 		<dict>
 			<key>begin</key>
-			<string>=='?|='?|-|~</string>
+			<string>==|=|-</string>
 			<key>contentName</key>
 			<string>source.ruby.embedded.slim</string>
 			<key>end</key>
@@ -569,11 +560,13 @@
 					<key>include</key>
 					<string>#delimited-ruby-c</string>
 				</dict>
+				<dict>
+					<key>include</key>
+					<string>#rubyline</string>
+				</dict>
 			</array>
 		</dict>
 	</dict>
-	<key>scopeName</key>
-	<string>text.slim</string>
 	<key>uuid</key>
 	<string>36302CC1-1E76-4910-B7B6-F1915EBBA0D3</string>
 </dict>
