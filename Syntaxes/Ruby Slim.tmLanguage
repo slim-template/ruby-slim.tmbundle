@@ -423,6 +423,8 @@
 					<string>punctuation.definition.string.begin.html</string>
 				</dict>
 			</dict>
+			<key>contentName</key>
+			<string>meta.toc-list.id.html</string>
 			<key>end</key>
 			<string>"</string>
 			<key>endCaptures</key>
@@ -459,6 +461,8 @@
 					<string>punctuation.definition.string.begin.html</string>
 				</dict>
 			</dict>
+			<key>contentName</key>
+			<string>meta.toc-list.id.html</string>
 			<key>end</key>
 			<string>'</string>
 			<key>endCaptures</key>
@@ -485,10 +489,23 @@
 		</dict>
 		<key>tag-generic-attribute</key>
 		<dict>
-			<key>match</key>
-			<string>[\w.#:-]+=</string>
+			<key>begin</key>
+			<string>^[\w.#:-]+=</string>
+			<key>end</key>
+			<string>$</string>
 			<key>name</key>
 			<string>entity.other.attribute-name.html</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#string-double-quoted</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#string-single-quoted</string>
+				</dict>
+			</array>
 		</dict>
 		<key>tag-id-attribute</key>
 		<dict>
@@ -514,78 +531,12 @@
 			<key>patterns</key>
 			<array>
 				<dict>
-					<key>begin</key>
-					<string>"</string>
-					<key>beginCaptures</key>
-					<dict>
-						<key>0</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.definition.string.begin.html</string>
-						</dict>
-					</dict>
-					<key>contentName</key>
-					<string>meta.toc-list.id.html</string>
-					<key>end</key>
-					<string>"</string>
-					<key>endCaptures</key>
-					<dict>
-						<key>0</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.definition.string.end.html</string>
-						</dict>
-					</dict>
-					<key>name</key>
-					<string>string.quoted.double.html</string>
-					<key>patterns</key>
-					<array>
-						<dict>
-							<key>include</key>
-							<string>#embedded-ruby</string>
-						</dict>
-						<dict>
-							<key>include</key>
-							<string>#entities</string>
-						</dict>
-					</array>
+					<key>include</key>
+					<string>#string-double-quoted</string>
 				</dict>
 				<dict>
-					<key>begin</key>
-					<string>'</string>
-					<key>beginCaptures</key>
-					<dict>
-						<key>0</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.definition.string.begin.html</string>
-						</dict>
-					</dict>
-					<key>contentName</key>
-					<string>meta.toc-list.id.html</string>
-					<key>end</key>
-					<string>'</string>
-					<key>endCaptures</key>
-					<dict>
-						<key>0</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.definition.string.end.html</string>
-						</dict>
-					</dict>
-					<key>name</key>
-					<string>string.quoted.single.html</string>
-					<key>patterns</key>
-					<array>
-						<dict>
-							<key>include</key>
-							<string>#embedded-ruby</string>
-						</dict>
-						<dict>
-							<key>include</key>
-							<string>#entities</string>
-						</dict>
-					</array>
+					<key>include</key>
+					<string>#string-single-quoted</string>
 				</dict>
 			</array>
 		</dict>
@@ -604,14 +555,6 @@
 				<dict>
 					<key>include</key>
 					<string>#tag-generic-attribute</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#string-double-quoted</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#string-single-quoted</string>
 				</dict>
 				<dict>
 					<key>include</key>
