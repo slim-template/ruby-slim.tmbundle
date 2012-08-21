@@ -1,8 +1,8 @@
-# Slim TextMate Bundle
+# Slim TextMate/Sublime Bundle
 
 ## Description
 
-This is the [Textmate](http://macromates.com/) bundle for [Slim](http://slim-lang.com/), based on the [Handcrafted Haml bundle](http://github.com/handcrafted/handcrafted-haml-textmate-bundle).
+This is the [Textmate](http://macromates.com/)/[Sublime Text](http://www.sublimetext.com/)  bundle for [Slim](http://slim-lang.com/), based on the [Handcrafted Haml bundle](http://github.com/handcrafted/handcrafted-haml-textmate-bundle).
 
 ## Installation
 
