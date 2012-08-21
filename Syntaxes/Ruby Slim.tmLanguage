@@ -200,7 +200,7 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>(\|)\s*\n</string>
+			<string>(\\)\s*\n</string>
 		</dict>
 		<key>delimited-ruby-a</key>
 		<dict>
@@ -391,7 +391,7 @@
 			<key>contentName</key>
 			<string>source.ruby.embedded.slim</string>
 			<key>end</key>
-			<string>((do|\{)( \|[^|]+\|)?)$|$|^(?!.*\|\s*$)</string>
+			<string>((do|\{)( \|[^|]+\|)?)$|[^\\]$</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>1</key>
