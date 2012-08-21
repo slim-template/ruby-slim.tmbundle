@@ -292,7 +292,7 @@
 		<key>inline-html-tag</key>
 		<dict>
 			<key>begin</key>
-			<string>:?\s*([.#]?[\w.#_-]+:)</string>
+			<string>\s*([\w.#_-]+:)(?=\s)</string>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
@@ -327,7 +327,7 @@
 		<key>normal-html-tag</key>
 		<dict>
 			<key>begin</key>
-			<string>^\s*([.#]?[\w.#_-]+)</string>
+			<string>([\w.#_-]+=)</string>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
@@ -344,12 +344,20 @@
 					<key>include</key>
 					<string>#tag-stuff</string>
 				</dict>
+				<dict>
+					<key>include</key>
+					<string>#string-double-quoted</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#string-single-quoted</string>
+				</dict>
 			</array>
 		</dict>
 		<key>normal-inline-html-tag</key>
 		<dict>
 			<key>begin</key>
-			<string>([.#]?[\w.#_-]+\s)</string>
+			<string>([\w.#_-]+)</string>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
@@ -487,26 +495,6 @@
 				</dict>
 			</array>
 		</dict>
-		<key>tag-generic-attribute</key>
-		<dict>
-			<key>begin</key>
-			<string>^[\w.#:-]+=</string>
-			<key>end</key>
-			<string>$</string>
-			<key>name</key>
-			<string>entity.other.attribute-name.html</string>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>include</key>
-					<string>#string-double-quoted</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#string-single-quoted</string>
-				</dict>
-			</array>
-		</dict>
 		<key>tag-id-attribute</key>
 		<dict>
 			<key>begin</key>
@@ -550,11 +538,11 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#tag-id-attribute</string>
+					<string>#normal-html-tag</string>
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#tag-generic-attribute</string>
+					<string>#tag-id-attribute</string>
 				</dict>
 				<dict>
 					<key>include</key>
