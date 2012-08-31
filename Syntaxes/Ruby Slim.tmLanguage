@@ -300,7 +300,7 @@
 		<key>inline-html-tag</key>
 		<dict>
 			<key>begin</key>
-			<string>\s*([\w.#_-]+:)(?=\s)</string>
+			<string>\s*([\w.#_-]+:)(?=\s[^:'"])</string>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
