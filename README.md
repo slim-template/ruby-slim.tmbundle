@@ -1,4 +1,4 @@
-# Slim TextMate/Sublime Bundle
+# Slim TextMate/Sublime Bundle [![endorse](http://api.coderwall.com/fredwu/endorsecount.png)](http://coderwall.com/fredwu)
 
 ## Description
 
