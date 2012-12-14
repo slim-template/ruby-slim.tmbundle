@@ -4,7 +4,7 @@
 <dict>
 	<key>content</key>
 	<string>ol${1:#${2:selector}}
-  li ${3:Lorem ipsum dolor sit amet, consectetur adipisicing elit.}$0</string>
+	li ${3:Lorem ipsum dolor sit amet, consectetur adipisicing elit.}$0</string>
 	<key>name</key>
 	<string>ol</string>
 	<key>scope</key>

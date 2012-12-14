@@ -2,16 +2,18 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>content</key>
-	<string>preserve:
-	$0</string>
 	<key>name</key>
-	<string>filter (preserve)</string>
+	<string>Disable Indent Corrections</string>
 	<key>scope</key>
 	<string>text.slim</string>
-	<key>tabTrigger</key>
-	<string>:f</string>
+	<key>settings</key>
+	<dict>
+		<key>disableIndentCorrections</key>
+		<string>1</string>
+		<key>indentOnPaste</key>
+		<string>simple</string>
+	</dict>
 	<key>uuid</key>
-	<string>CC565EA9-4773-4203-9376-4D59EE8C970A</string>
+	<string>D4A6BCC3-1E6F-4879-805B-F51C7D0140A2</string>
 </dict>
 </plist>

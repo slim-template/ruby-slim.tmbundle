@@ -4,9 +4,9 @@
 <dict>
 	<key>content</key>
 	<string>.columns.clearfix
-  .column.one
-  .column.two
-  .column.three</string>
+	.column.one
+	.column.two
+	.column.three</string>
 	<key>name</key>
 	<string>.columns</string>
 	<key>scope</key>
