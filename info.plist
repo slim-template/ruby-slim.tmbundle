@@ -7,7 +7,7 @@
 	<key>contactName</key>
 	<string>Fred Wu</string>
 	<key>description</key>
-	<string>Slim TextMate bundle. Fork me on GitHub.</string>
+	<string>A lightweight templating engine for ruby, &lt;a href="http://slim-lang.com" title="Slim - A Fast, Lightweight Template Engine for Ruby"&gt;more info&lt;/a&gt;.</string>
 	<key>mainMenu</key>
 	<dict>
 		<key>items</key>
