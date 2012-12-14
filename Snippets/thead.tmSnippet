@@ -4,9 +4,9 @@
 <dict>
 	<key>content</key>
 	<string>thead
-  tr
-    th
-      ${1:Table Heading} $0</string>
+	tr
+		th
+			${1:Table Heading} $0</string>
 	<key>name</key>
 	<string>thead</string>
 	<key>scope</key>
