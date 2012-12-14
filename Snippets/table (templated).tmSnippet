@@ -4,14 +4,14 @@
 <dict>
 	<key>content</key>
 	<string>table
-  thead
-    tr
-      th
-        ${1:Table Heading}
-  tbody
-    tr
-      td
-        ${2:Table Data}</string>
+	thead
+		tr
+			th
+			${1:Table Heading}
+	tbody
+		tr
+			td
+				${2:Table Data}</string>
 	<key>name</key>
 	<string>table (templated)</string>
 	<key>scope</key>
