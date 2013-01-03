@@ -9,13 +9,13 @@ This is the [Textmate](http://macromates.com/)/[Sublime Text](http://www.sublime
 ### Textmate 1.x
 
     cd ~/Library/Application\ Support/TextMate/Bundles/
-    git clone git://github.com/fredwu/ruby-slim-tmbundle.git Ruby-Slim.tmbundle
+    git clone git://github.com/slim-template/ruby-slim.tmbundle.git Ruby-Slim.tmbundle
     osascript -e 'tell app "TextMate" to reload bundles'
 
 ### Textmate 2.x
 
     cd ~/Library/Application\ Support/TextMate/Managed/Bundles/
-    git clone git://github.com/fredwu/ruby-slim-tmbundle.git Ruby-Slim.tmbundle
+    git clone git://github.com/slim-template/ruby-slim.tmbundle.git Ruby-Slim.tmbundle
 
 ### Sublime Text 2
 
