@@ -346,13 +346,43 @@
 		<key>inline-html-tag</key>
 		<dict>
 			<key>begin</key>
-			<string>\r\s*([\w.#_-]+:)(?=\s)</string>
+			<string>^(\s*([\w.#_-]+( [\w.#_-]+=(".*?"))*: )*)([\w.#_-]+( [\w.#_-]+=(".*?"))*:)(?=\s)</string>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
 					<string>entity.name.tag.slim</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.tag.slim</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.tag.slim</string>
+				</dict>
+				<key>4</key>
+				<dict>
+					<key>name</key>
+					<string>string.quoted.double.html</string>
+				</dict>
+				<key>5</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.tag.slim</string>
+				</dict>
+				<key>6</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.tag.slim</string>
+				</dict>
+				<key>7</key>
+				<dict>
+					<key>name</key>
+					<string>string.quoted.double.html</string>
 				</dict>
 			</dict>
 			<key>end</key>
