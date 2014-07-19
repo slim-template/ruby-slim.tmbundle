@@ -456,10 +456,6 @@
 					<key>include</key>
 					<string>#string-double-quoted</string>
 				</dict>
-				<dict>
-					<key>include</key>
-					<string>#string-single-quoted</string>
-				</dict>
 			</array>
 		</dict>
 		<key>normal-inline-html-tag</key>
@@ -565,44 +561,7 @@
 				</dict>
 			</array>
 		</dict>
-		<key>string-single-quoted</key>
-		<dict>
-			<key>begin</key>
-			<string>'</string>
-			<key>beginCaptures</key>
-			<dict>
-				<key>0</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.string.begin.html</string>
-				</dict>
-			</dict>
-			<key>contentName</key>
-			<string>meta.toc-list.id.html</string>
-			<key>end</key>
-			<string>'</string>
-			<key>endCaptures</key>
-			<dict>
-				<key>0</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.string.end.html</string>
-				</dict>
-			</dict>
-			<key>name</key>
-			<string>string.quoted.single.html</string>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>include</key>
-					<string>#embedded-ruby</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#entities</string>
-				</dict>
-			</array>
-		</dict>
+		
 		<key>tag-id-attribute</key>
 		<dict>
 			<key>begin</key>
@@ -629,10 +588,6 @@
 				<dict>
 					<key>include</key>
 					<string>#string-double-quoted</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#string-single-quoted</string>
 				</dict>
 			</array>
 		</dict>
