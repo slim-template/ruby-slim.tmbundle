@@ -560,20 +560,7 @@
 			<key>contentName</key>
 			<string>source.ruby.embedded.slim</string>
 			<key>end</key>
-			<string>((do|\{)( \|[^|]+\|)?)$|[^\\,]$</string>
-			<key>endCaptures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>source.ruby.embedded.html</string>
-				</dict>
-				<key>2</key>
-				<dict>
-					<key>name</key>
-					<string>keyword.control.ruby.start-block</string>
-				</dict>
-			</dict>
+			<string>(?&lt;!\\|,)$</string>
 			<key>name</key>
 			<string>meta.line.ruby.slim</string>
 			<key>patterns</key>
