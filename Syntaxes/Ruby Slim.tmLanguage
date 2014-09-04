@@ -393,8 +393,24 @@
 		<dict>
 			<key>begin</key>
 			<string>(?&lt;!\\)#{</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.embedded.ruby</string>
+				</dict>
+			</dict>
 			<key>end</key>
 			<string>}</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.embedded.ruby</string>
+				</dict>
+			</dict>
 			<key>name</key>
 			<string>source.ruby.embedded.html</string>
 			<key>patterns</key>
