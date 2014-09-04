@@ -556,7 +556,7 @@
 		<key>rubyline</key>
 		<dict>
 			<key>begin</key>
-			<string>=='|='|==|=|-</string>
+			<string>(==|=)(&lt;&gt;|&gt;&lt;|&lt;'|'&lt;|&lt;|&gt;|')?|-</string>
 			<key>contentName</key>
 			<string>source.ruby.embedded.slim</string>
 			<key>end</key>
