@@ -607,7 +607,7 @@
 			<key>contentName</key>
 			<string>source.ruby.embedded.slim</string>
 			<key>end</key>
-			<string>(?&lt;!\\|,)$</string>
+			<string>(?&lt;!\\|,|\n)$</string>
 			<key>name</key>
 			<string>meta.line.ruby.slim</string>
 			<key>patterns</key>
