@@ -65,6 +65,37 @@
 		</dict>
 		<dict>
 			<key>begin</key>
+			<string>^(---)\s*\n</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>storage.frontmatter.slim</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>^(---)\s*\n</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>storage.frontmatter.slim</string>
+				</dict>
+			</dict>
+			<key>name</key>
+			<string>source.yaml.meta.slim</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>source.yaml</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>begin</key>
 			<string>^(\s*)(coffee):$</string>
 			<key>beginCaptures</key>
 			<dict>
@@ -599,7 +630,7 @@
 			<key>contentName</key>
 			<string>source.ruby.embedded.slim</string>
 			<key>end</key>
-			<string>(?&lt;!\\|,)$</string>
+			<string>(?&lt;!\\|,|\n)$</string>
 			<key>name</key>
 			<string>meta.line.ruby.slim</string>
 			<key>patterns</key>
