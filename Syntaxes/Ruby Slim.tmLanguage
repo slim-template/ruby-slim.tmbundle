@@ -224,22 +224,8 @@
 			<string>meta.prolog.slim</string>
 		</dict>
 		<dict>
-			<key>captures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.section.comment.slim</string>
-				</dict>
-			</dict>
-			<key>match</key>
-			<string>^\s*(/)\s*\S.*$\n?</string>
-			<key>name</key>
-			<string>comment.line.slash.slim</string>
-		</dict>
-		<dict>
 			<key>begin</key>
-			<string>^(\s*)(/)\s*$</string>
+			<string>^(\s*)(/)\s*</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>2</key>
@@ -287,13 +273,18 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>^\s*([\w.#_-]*[\w]+)\s*</string>
+			<string>^\s*((\w*)(?:[.#_-]\w+)*)\s*</string>
 			<key>captures</key>
 			<dict>
 				<key>0</key>
 				<dict>
 					<key>name</key>
 					<string>entity.name.tag.slim</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.tag-name.slim</string>
 				</dict>
 			</dict>
 			<key>end</key>
