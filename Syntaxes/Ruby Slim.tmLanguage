@@ -273,7 +273,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>^\s*((\w*)(?:[.#_-]\w+)*)\s*</string>
+			<string>^\s*((\w*)(?:[.#_-]*\w+)*)\s*</string>
 			<key>captures</key>
 			<dict>
 				<key>0</key>
