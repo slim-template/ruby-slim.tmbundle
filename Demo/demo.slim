@@ -1,0 +1,184 @@
+/Comment
+/ Space comment
+/ TODO Comment blocks don't highlight https://github.com/slim-template/ruby-slim.tmbundle/issues/38
+/ Nested Comment
+  Comment
+// Comment
+/! HTML comment
+/[...] IE comment
+
+
+/ Root level
+section
+
+/ Element with integer
+h2
+
+section
+  #nested
+    .selectors
+
+/ Classes and IDs
+section.class
+section.two.classes
+section#id
+section#id.class
+section.class#id
+section.class#id.class
+section.dash-class
+section.dashdash--class
+section.underscore_class
+section.underscoreunderscore__class
+section.-leading-dash
+
+/ ID and Class Shortcut
+
+.class
+.two.classes
+#id
+#id.class
+.class#id
+.class#id.class
+.dash-class
+.dashdash--class
+.underscore_class
+.underscoreunderscore__class
+.-leading-dash
+
+/ Attributes
+div quoted="attribute"
+div quoted="attribute" single='quoted'
+div dash-attribute='attribute'
+div.class with-attribute="attribute"
+div.class with-attribute="attribute\
+  multiple lines"
+div constant=true
+div constant=false
+div constant=nil
+
+/ Ruby attributes
+div dynamic-value=ruby_variable
+div dynamic-value=ruby_variable(with: args, and: 'strings')
+/ TODO https://github.com/slim-template/ruby-slim.tmbundle/issues/47 but also keep in mind https://github.com/slim-template/ruby-slim.tmbundle/issues/53
+div dynamic-value=ruby_variable(with: args,\
+  and: 'strings')
+
+/ Attribute wrapping
+div(bracket="attributes" multiple="attributes")
+div[bracket="attributes" multiple="attributes"]
+div [ bracket="attributes" multiple="attributes" ]
+/ TODO line-break attribute wrapping doesn't hold
+div[bracket="attributes"
+  multiple="attributes"]
+
+/ Attribute merging
+div attribute=['value1', 'value2']
+div attribute=:value1,value2
+
+/ Splats
+#splat*{ 'attribute' => 'value'}
+#splat*{attribute: 'value'}
+/ TODO * is incorrectly colored
+#splat *@variable
+#splat *variable
+
+/ Dynamic tags
+*{ tag: 'span' }
+
+/ Interpolation
+div #{variable if amount > 0} Extra text
+div Extra #{variable if amount > 0} text
+div Extra text #{variable if amount > 0}
+div attribute="#{variable if amount > 0} extra-text"
+
+/ Whitespace
+span< Before
+span> attribute="value" After
+span.class<> Both
+
+/ Inline
+h2: span Text
+h2: span.class Text
+h2: span.class attributes="value" Text
+.with-class: .and-attribute additional-attribute="value" Text
+
+/ Ruby
+- array.each do |item|
+== render 'this', locals: { attribute: 'value' }
+h1 = yield :yield_sym
+= app_helper('string', sym: 'value', class: 'value')
+p = app_helper('string', sym: 'value')
+- content_for :hello_slim do
+  p.class
+  p = @hello
+  p Regular
+
+/ Verbatim
+article
+  | Opening text
+
+/ TODO https://github.com/slim-template/ruby-slim.tmbundle/issues/59
+|
+  Other text
+  Other text
+
+- if true
+  | console.log("foo");
+- else
+  | console.log("bar");
+
+/ HTML
+
+/ TODO HTML tags don't highlight at root level or within elements
+.inline Text <normal html_tag="this"><and this="this"> Text
+| <tag dash-attribute="this"><tag:with:colon this="this">
+<normal class="html-tag">
+
+/ Embedded Engines
+
+ruby:
+  blank = []
+  @instance.each do |item|
+    blank << item.name
+  end
+  # Comment
+  blank = @instance.map(&:name)
+
+javascript:
+  (function() {
+    console.log('hello world');
+  });
+
+coffee:
+  anon: ->
+    console.log 'hello world'
+
+scss:
+  .hello:before {
+    color: $world
+  }
+
+css:
+  .hello:before {
+    content: 'world'
+  }
+
+less:
+  .hello:before {
+    content: @world
+  }
+
+sass:
+  .hello
+    content: $world
+
+markdown:
+  # Hello
+  **World**
+
+erb:
+  <%= hello_world if hello_world.present? %>
+
+---
+front_matter: present
+---

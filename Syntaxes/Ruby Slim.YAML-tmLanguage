@@ -1,0 +1,316 @@
+fileTypes:
+- slim
+- skim
+foldingStartMarker: ^\s*([-%#\:\.\w\=].*)\s$
+foldingStopMarker: ^\s*$
+keyEquivalent: ^~S
+name: Ruby Slim
+patterns:
+- begin: ^(\s*)(ruby):$
+  beginCaptures:
+    '2':
+      name: constant.language.name.ruby.filter.slim
+  end: ^(?!(\1\s)|\s*$)
+  name: text.ruby.filter.slim
+  patterns:
+  - include: source.ruby
+
+- begin: ^(\s*)(javascript):$
+  beginCaptures:
+    '2':
+      name: constant.language.name.javascript.filter.slim
+  end: ^(?!(\1\s)|\s*$)
+  name: text.javascript.filter.slim
+  patterns:
+  - include: source.js
+
+- begin: ^(---)\s*\n
+  beginCaptures:
+    '1':
+      name: storage.frontmatter.slim
+  end: ^(---)\s*\n
+  endCaptures:
+    '1':
+      name: storage.frontmatter.slim
+  name: source.yaml.meta.slim
+  patterns:
+  - include: source.yaml
+
+- begin: ^(\s*)(coffee):$
+  beginCaptures:
+    '2':
+      name: constant.language.name.coffeescript.filter.slim
+  end: ^(?!(\1\s)|\s*$)
+  name: text.coffeescript.filter.slim
+  patterns:
+  - include: source.coffee
+
+- begin: ^(\s*)(markdown):$
+  beginCaptures:
+    '2':
+      name: constant.language.name.markdown.filter.slim
+  end: ^(?!(\1\s)|\s*$)
+  name: text.markdown.filter.slim
+  patterns:
+  - include: source.md
+
+- begin: ^(\s*)(css):$
+  beginCaptures:
+    '2':
+      name: constant.language.name.css.filter.slim
+  end: ^(?!(\1\s)|\s*$)
+  name: text.css.filter.slim
+  patterns:
+  - include: source.css
+
+- begin: ^(\s*)(sass):$
+  beginCaptures:
+    '2':
+      name: constant.language.name.sass.filter.slim
+  end: ^(?!(\1\s)|\s*$)
+  name: text.sass.filter.slim
+  patterns:
+  - include: source.sass
+
+- begin: ^(\s*)(scss):$
+  beginCaptures:
+    '2':
+      name: constant.language.name.scss.filter.slim
+  end: ^(?!(\1\s)|\s*$)
+  name: text.scss.filter.slim
+  patterns:
+  - include: source.scss
+
+- begin: ^(\s*)(less):$
+  beginCaptures:
+    '2':
+      name: constant.language.name.less.filter.slim
+  end: ^(?!(\1\s)|\s*$)
+  name: text.less.filter.slim
+  patterns:
+  - include: source.less
+
+- begin: ^(\s*)(erb):$
+  beginCaptures:
+    '2':
+      name: constant.language.name.erb.filter.slim
+  end: ^(?!(\1\s)|\s*$)
+  name: text.erb.filter.slim
+  patterns:
+  - include: source.erb
+
+- captures:
+    '1':
+      name: punctuation.definition.prolog.slim
+  match: ^(! )($|\s.*)
+  name: meta.prolog.slim
+
+- captures:
+    '1':
+      name: punctuation.section.comment.slim
+  match: ^\s*(/)\s*\S.*$\n?
+  name: comment.line.slash.slim
+
+- begin: ^(\s*)(/)\s*$
+  beginCaptures:
+    '1':
+      name: punctuation.section.comment.slim
+  end: ^(?!\1  )
+  name: comment.block.slim
+  patterns:
+  - include: text.slim
+
+- begin: (?==+|-|~)
+  end: $
+  patterns:
+  - include: '#rubyline'
+
+- include: '#normal-html-tag'
+- include: '#embedded-ruby'
+- include: '#slim-declaration'
+
+- begin: ^\s*(\.|#|[a-zA-Z0-9-_]+)([a-zA-Z0-9-_]+)?(?:(:)\s([a-zA-Z0-9-_]+)?)?
+  end: $|(?!\.|#|=|-|~|/|\}|\]|\*|\s?[\*\{])
+  name: meta.tag.any.slim
+  comment: 1 - dot or hash; 2 - OPTIONAL any combination of word, number, dash or underscore (following a . or #); 3 - colon; 4 - Any combination of word, number, dash or underscore
+  captures:
+    '1':
+      name: entity.name.tag.slim
+    '2':
+      name: entity.other.attribute-name.event.slim
+    '3':
+      name: punctuation.definition.tag.end.slim
+    '4':
+      name: entity.name.tag.slim
+
+  patterns:
+  - include: '#tag-class-id-attribute'
+  - begin: (\*\{)(?=.*\}|.*\|\s*$)
+    end: (\})|$|^(?!.*\|\s*$)
+    name: source.ruby.embedded.slim
+    comment: Splat attributes
+    beginCaptures:
+      '1':
+        name: punctuation.section.embedded.ruby
+    endCaptures:
+      '1':
+        name: punctuation.section.embedded.ruby
+    patterns:
+    - include: '#embedded-ruby'
+  - include: '#rubyline'
+  - match: /
+    name: punctuation.terminator.tag.slim
+
+- captures:
+    '1':
+      name: meta.escape.slim
+  match: ^\s*(\\.)
+
+- begin: ^\s*(?=\||')
+  end: $
+
+  patterns:
+  - include: '#embedded-ruby'
+  - include: text.html.basic
+
+repository:
+  continuation:
+    captures:
+      '1':
+        name: punctuation.separator.continuation.slim
+    match: ([\\,])\s*\n
+  delimited-ruby-a:
+    begin: =\(
+    end: \)(?=( \w|$))
+    name: source.ruby.embedded.slim
+    patterns:
+    - include: source.ruby.rails
+  delimited-ruby-b:
+    begin: =\[
+    end: \](?=( \w|$))
+    name: source.ruby.embedded.slim
+    patterns:
+    - include: source.ruby.rails
+  delimited-ruby-c:
+    begin: =\{
+    end: \}(?=( \w|$))
+    name: source.ruby.embedded.slim
+    patterns:
+    - include: source.ruby.rails
+  embedded-ruby:
+    begin: (?<!\\)#\{{1,2}
+    beginCaptures:
+      '0':
+        name: punctuation.section.embedded.ruby
+    end: \}{1,2}
+    endCaptures:
+      '0':
+        name: punctuation.section.embedded.ruby
+    name: source.ruby.embedded.html
+    patterns:
+    - include: source.ruby.rails
+  entities:
+    patterns:
+    - captures:
+        '1':
+          name: punctuation.definition.entity.html
+        '3':
+          name: punctuation.definition.entity.html
+      match: (&)([a-zA-Z0-9]+|#[0-9]+|#x[0-9a-fA-F]+)(;)
+      name: constant.character.entity.html
+    - match: '&'
+      name: invalid.illegal.bad-ampersand.html
+  interpolated-ruby:
+    begin: =(?=\b)
+    end: \s|\w$
+    name: source.ruby.embedded.html
+  normal-html-tag:
+    begin: ([\w.#_-]+)=(true|false|nil)?
+    captures:
+      '1':
+        name: entity.other.attribute-name.event.slim
+      '2':
+        name: constant.language.slim
+    end: $
+    patterns:
+    - include: '#tag-stuff'
+    - include: '#string-double-quoted'
+    - include: '#string-single-quoted'
+  normal-inline-html-tag:
+    begin: ([\w.#_-]+)
+    captures:
+      '1':
+        name: entity.name.tag.slim
+    end: $
+    patterns:
+    - include: '#tag-stuff'
+  rubyline:
+    begin: (==|=)(<>|><|<'|'<|<|>|')?|-
+    contentName: source.ruby.embedded.slim
+    end: (?<!\\|,)$
+    name: meta.line.ruby.slim
+    patterns:
+    - comment: Hack to let ruby comments work in this context properly
+      match: '#.*$'
+      name: comment.line.number-sign.ruby
+    - include: '#continuation'
+    - include: source.ruby.rails
+  string-double-quoted:
+    begin: '"'
+    beginCaptures:
+      '0':
+        name: punctuation.definition.string.begin.html
+    contentName: meta.toc-list.id.html
+    end: '"'
+    endCaptures:
+      '0':
+        name: punctuation.definition.string.end.html
+    name: string.quoted.double.html
+    patterns:
+    - include: '#embedded-ruby'
+    - include: '#entities'
+  string-single-quoted:
+    begin: ''''
+    beginCaptures:
+      '0':
+        name: punctuation.definition.string.begin.html
+    contentName: meta.toc-list.id.html
+    end: ''''
+    endCaptures:
+      '0':
+        name: punctuation.definition.string.end.html
+    name: string.quoted.single.html
+    patterns:
+    - include: '#embedded-ruby'
+    - include: '#entities'
+  tag-class-id-attribute:
+    match: (\.|#)([\w\d-_]+)
+    captures:
+      '1':
+        name: punctuation.separator.key-value.html
+      '2':
+        name: entity.other.attribute-name.html
+  tag-id-attribute:
+    begin: \b(id)\b\s*(=)
+    captures:
+      '1':
+        name: entity.other.attribute-name.id.html
+      '2':
+        name: punctuation.separator.key-value.html
+    end: (?<='|")
+    name: meta.attribute-with-value.id.html
+    patterns:
+    - include: '#string-double-quoted'
+    - include: '#string-single-quoted'
+  tag-stuff:
+    patterns:
+    - include: '#normal-html-tag'
+    - include: '#tag-id-attribute'
+    - include: '#interpolated-ruby'
+    - include: '#delimited-ruby-a'
+    - include: '#delimited-ruby-b'
+    - include: '#delimited-ruby-c'
+    - include: '#rubyline'
+    - include: '#embedded-ruby'
+scopeName: text.slim
+uuid: 36302CC1-1E76-4910-B7B6-F1915EBBA0D3

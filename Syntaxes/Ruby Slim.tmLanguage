@@ -205,7 +205,53 @@
 			<array>
 				<dict>
 					<key>include</key>
-					<string>source.sass</string>
+					<string>source.scss</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>begin</key>
+			<string>^(\s*)(less):$</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>constant.language.name.less.filter.slim</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>^(?!(\1\s)|\s*$)</string>
+			<key>name</key>
+			<string>text.less.filter.slim</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>source.less</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>begin</key>
+			<string>^(\s*)(erb):$</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>constant.language.name.erb.filter.slim</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>^(?!(\1\s)|\s*$)</string>
+			<key>name</key>
+			<string>text.erb.filter.slim</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>source.erb</string>
 				</dict>
 			</array>
 		</dict>
@@ -224,11 +270,25 @@
 			<string>meta.prolog.slim</string>
 		</dict>
 		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.comment.slim</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>^\s*(/)\s*\S.*$\n?</string>
+			<key>name</key>
+			<string>comment.line.slash.slim</string>
+		</dict>
+		<dict>
 			<key>begin</key>
-			<string>^(\s*)(/)\s*</string>
+			<string>^(\s*)(/)\s*$</string>
 			<key>beginCaptures</key>
 			<dict>
-				<key>2</key>
+				<key>1</key>
 				<dict>
 					<key>name</key>
 					<string>punctuation.section.comment.slim</string>
@@ -248,7 +308,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>^\s*(?===|=|-|~)</string>
+			<string>(?==+|-|~)</string>
 			<key>end</key>
 			<string>$</string>
 			<key>patterns</key>
@@ -261,10 +321,6 @@
 		</dict>
 		<dict>
 			<key>include</key>
-			<string>#inline-html-tag</string>
-		</dict>
-		<dict>
-			<key>include</key>
 			<string>#normal-html-tag</string>
 		</dict>
 		<dict>
@@ -272,11 +328,15 @@
 			<string>#embedded-ruby</string>
 		</dict>
 		<dict>
+			<key>include</key>
+			<string>#slim-declaration</string>
+		</dict>
+		<dict>
 			<key>begin</key>
-			<string>^\s*((\w*)(?:[.#_-]*\w+)*)\s*</string>
+			<string>^\s*(\.|#|[a-zA-Z0-9-_]+)([a-zA-Z0-9-_]+)?(?:(:)\s([a-zA-Z0-9-_]+)?)?</string>
 			<key>captures</key>
 			<dict>
-				<key>0</key>
+				<key>1</key>
 				<dict>
 					<key>name</key>
 					<string>entity.name.tag.slim</string>
@@ -284,48 +344,61 @@
 				<key>2</key>
 				<dict>
 					<key>name</key>
-					<string>entity.name.tag-name.slim</string>
+					<string>entity.other.attribute-name.event.slim</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.tag.end.slim</string>
+				</dict>
+				<key>4</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.tag.slim</string>
 				</dict>
 			</dict>
+			<key>comment</key>
+			<string>1 - dot or hash; 2 - OPTIONAL any combination of word, number, dash or underscore (following a . or</string>
 			<key>end</key>
-			<string>$|(?!\.|#|\{|\[|=|-|~|/)</string>
+			<string>$|(?!\.|#|=|-|~|/|\}|\]|\*|\s?[\*\{])</string>
+			<key>name</key>
+			<string>meta.tag.any.slim</string>
 			<key>patterns</key>
 			<array>
 				<dict>
-					<key>begin</key>
-					<string>\{(?=.*\}|.*\|\s*$)</string>
-					<key>end</key>
-					<string>\}|$|^(?!.*\|\s*$)</string>
-					<key>name</key>
-					<string>meta.section.attributes.slim</string>
-					<key>patterns</key>
-					<array>
-						<dict>
-							<key>include</key>
-							<string>source.ruby.rails</string>
-						</dict>
-						<dict>
-							<key>include</key>
-							<string>#continuation</string>
-						</dict>
-					</array>
+					<key>include</key>
+					<string>#tag-class-id-attribute</string>
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>\[(?=.*\]|.*\|\s*$)</string>
+					<string>(\*\{)(?=.*\}|.*\|\s*$)</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.section.embedded.ruby</string>
+						</dict>
+					</dict>
+					<key>comment</key>
+					<string>Splat attributes</string>
 					<key>end</key>
-					<string>\]|$|^(?!.*\|\s*$)</string>
+					<string>(\})|$|^(?!.*\|\s*$)</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.section.embedded.ruby</string>
+						</dict>
+					</dict>
 					<key>name</key>
-					<string>meta.section.object.slim</string>
+					<string>source.ruby.embedded.slim</string>
 					<key>patterns</key>
 					<array>
 						<dict>
 							<key>include</key>
-							<string>source.ruby.rails</string>
-						</dict>
-						<dict>
-							<key>include</key>
-							<string>#continuation</string>
+							<string>#embedded-ruby</string>
 						</dict>
 					</array>
 				</dict>
@@ -497,62 +570,6 @@
 				</dict>
 			</array>
 		</dict>
-		<key>inline-html-tag</key>
-		<dict>
-			<key>begin</key>
-			<string>^(\s*([\w.#_-]+( [\w.#_-]+=(".*?"))*: )*)([\w.#_-]+( [\w.#_-]+=(".*?"))*:)(?=\s)</string>
-			<key>captures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>entity.name.tag.slim</string>
-				</dict>
-				<key>2</key>
-				<dict>
-					<key>name</key>
-					<string>entity.name.tag.slim</string>
-				</dict>
-				<key>3</key>
-				<dict>
-					<key>name</key>
-					<string>entity.name.tag.slim</string>
-				</dict>
-				<key>4</key>
-				<dict>
-					<key>name</key>
-					<string>string.quoted.double.html</string>
-				</dict>
-				<key>5</key>
-				<dict>
-					<key>name</key>
-					<string>entity.name.tag.slim</string>
-				</dict>
-				<key>6</key>
-				<dict>
-					<key>name</key>
-					<string>entity.name.tag.slim</string>
-				</dict>
-				<key>7</key>
-				<dict>
-					<key>name</key>
-					<string>string.quoted.double.html</string>
-				</dict>
-			</dict>
-			<key>end</key>
-			<string>$</string>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>include</key>
-					<string>#normal-inline-html-tag</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#tag-stuff</string>
-				</dict>
-			</array>
-		</dict>
 		<key>interpolated-ruby</key>
 		<dict>
 			<key>begin</key>
@@ -565,13 +582,18 @@
 		<key>normal-html-tag</key>
 		<dict>
 			<key>begin</key>
-			<string>([\w.#_-]+=)</string>
+			<string>([\w.#_-]+)=(true|false|nil)?</string>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>entity.name.tag.slim</string>
+					<string>entity.other.attribute-name.event.slim</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>constant.language.slim</string>
 				</dict>
 			</dict>
 			<key>end</key>
@@ -621,7 +643,7 @@
 			<key>contentName</key>
 			<string>source.ruby.embedded.slim</string>
 			<key>end</key>
-			<string>(?&lt;!\\|,|\n)$</string>
+			<string>(?&lt;!\\|,)$</string>
 			<key>name</key>
 			<string>meta.line.ruby.slim</string>
 			<key>patterns</key>
@@ -720,6 +742,24 @@
 				</dict>
 			</array>
 		</dict>
+		<key>tag-class-id-attribute</key>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.separator.key-value.html</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>entity.other.attribute-name.html</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(\.|#)([\w\d-_]+)</string>
+		</dict>
 		<key>tag-id-attribute</key>
 		<dict>
 			<key>begin</key>
@@ -757,10 +797,6 @@
 		<dict>
 			<key>patterns</key>
 			<array>
-				<dict>
-					<key>include</key>
-					<string>#inline-html-tag</string>
-				</dict>
 				<dict>
 					<key>include</key>
 					<string>#normal-html-tag</string>
