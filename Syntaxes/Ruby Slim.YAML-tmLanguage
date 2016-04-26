@@ -105,20 +105,18 @@ patterns:
   match: ^(! )($|\s.*)
   name: meta.prolog.slim
 
-- captures:
-    '1':
-      name: punctuation.section.comment.slim
-  match: ^\s*(/)\s*\S.*$\n?
-  name: comment.line.slash.slim
-
-- begin: ^(\s*)(/)\s*$
+- begin: ^(\s*)(/)\s*.*$
   beginCaptures:
     '1':
       name: punctuation.section.comment.slim
   end: ^(?!\1  )
   name: comment.block.slim
-  patterns:
-  - include: text.slim
+
+- captures:
+    '1':
+      name: punctuation.section.comment.slim
+  match: ^\s*(/)\s*\S.*$\n?
+  name: comment.line.slash.slim
 
 - begin: (?==+|-|~)
   end: $
