@@ -7,7 +7,6 @@
 /! HTML comment
 /[...] IE comment
 
-
 / Root level
 section
 
@@ -98,9 +97,12 @@ span.class<> Both
 
 / Inline
 h2: span Text
-h2: span.class Text
+h2.with-class.second-class: span Text
+h2.with-class.second-class: span.with-class Text
+h2: span.class.class Text
 h2: span.class attributes="value" Text
-.with-class: .and-attribute additional-attribute="value" Text
+.with-class: .single-class data-attribute="value" Text
+.with-class.double-class: .class-and.additional.class attrubute="value" Text here
 
 / Ruby
 - array.each do |item|
@@ -112,6 +114,12 @@ p = app_helper('string', sym: 'value')
   p.class
   p = @hello
   p Regular
+== render 'multiline',
+  with: 'locals',
+  and: :symbols
+== render 'multiline'\
+  with: 'locals',
+  and: :symbols
 
 / Verbatim
 article

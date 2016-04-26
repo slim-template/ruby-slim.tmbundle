@@ -127,23 +127,31 @@ patterns:
 
 - include: '#normal-html-tag'
 - include: '#embedded-ruby'
-- include: '#slim-declaration'
 
-- begin: ^\s*(\.|#|[a-zA-Z0-9-_]+)([a-zA-Z0-9-_]+)?(?:(:)\s([a-zA-Z0-9-_]+)?)?
-  end: $|(?!\.|#|=|-|~|/|\}|\]|\*|\s?[\*\{])
-  name: meta.tag.any.slim
-  comment: 1 - dot or hash; 2 - OPTIONAL any combination of word, number, dash or underscore (following a . or #); 3 - colon; 4 - Any combination of word, number, dash or underscore
+- begin: ^\s*(\.|#|[a-zA-Z0-9]+)([\w-]+)?
+  end: $|(?!\.|#|=|:|-|~|/|\}|\]|\*|\s?[\*\{])
+  name: meta.tag
+  comment: 1 - dot OR hash OR any combination of word, number; 2 - OPTIONAL any combination of word, number, dash or underscore (following a . or #)
   captures:
     '1':
       name: entity.name.tag.slim
     '2':
       name: entity.other.attribute-name.event.slim
-    '3':
-      name: punctuation.definition.tag.end.slim
-    '4':
-      name: entity.name.tag.slim
 
   patterns:
+  - begin: (:\s)(\.|#|[a-zA-Z0-9]+)([\w-]+)?
+    end: $|(?!\.|#|=|-|~|/|\}|\]|\*|\s?[\*\{])
+    comment: Inline HTML / 1 - colon; 2 - dot OR hash OR any combination of word, number; 3 - OPTIONAL any combination of word, number, dash or underscore (following a . or #)
+    captures:
+      '1':
+        name: punctuation.definition.tag.end.slim
+      '2':
+        name: entity.name.tag.slim
+      '3':
+        name: entity.other.attribute-name.event.slim
+    patterns:
+    - include: '#tag-class-id-attribute'
+    - include: '#normal-html-tag'
   - include: '#tag-class-id-attribute'
   - begin: (\*\{)(?=.*\}|.*\|\s*$)
     end: (\})|$|^(?!.*\|\s*$)
@@ -247,7 +255,7 @@ repository:
   rubyline:
     begin: (==|=)(<>|><|<'|'<|<|>|')?|-
     contentName: source.ruby.embedded.slim
-    end: (?<!\\|,)$
+    end: (?<!\\|,|,\n|\\\n)$
     name: meta.line.ruby.slim
     patterns:
     - comment: Hack to let ruby comments work in this context properly

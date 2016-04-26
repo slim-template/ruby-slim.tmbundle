@@ -328,12 +328,8 @@
 			<string>#embedded-ruby</string>
 		</dict>
 		<dict>
-			<key>include</key>
-			<string>#slim-declaration</string>
-		</dict>
-		<dict>
 			<key>begin</key>
-			<string>^\s*(\.|#|[a-zA-Z0-9-_]+)([a-zA-Z0-9-_]+)?(?:(:)\s([a-zA-Z0-9-_]+)?)?</string>
+			<string>^\s*(\.|#|[a-zA-Z0-9]+)([\w-]+)?</string>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
@@ -346,25 +342,52 @@
 					<key>name</key>
 					<string>entity.other.attribute-name.event.slim</string>
 				</dict>
-				<key>3</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.tag.end.slim</string>
-				</dict>
-				<key>4</key>
-				<dict>
-					<key>name</key>
-					<string>entity.name.tag.slim</string>
-				</dict>
 			</dict>
 			<key>comment</key>
-			<string>1 - dot or hash; 2 - OPTIONAL any combination of word, number, dash or underscore (following a . or</string>
+			<string>1 - dot OR hash OR any combination of word, number; 2 - OPTIONAL any combination of word, number, dash or underscore (following a . or</string>
 			<key>end</key>
-			<string>$|(?!\.|#|=|-|~|/|\}|\]|\*|\s?[\*\{])</string>
+			<string>$|(?!\.|#|=|:|-|~|/|\}|\]|\*|\s?[\*\{])</string>
 			<key>name</key>
-			<string>meta.tag.any.slim</string>
+			<string>meta.tag</string>
 			<key>patterns</key>
 			<array>
+				<dict>
+					<key>begin</key>
+					<string>(:\s)(\.|#|[a-zA-Z0-9]+)([\w-]+)?</string>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.tag.end.slim</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.tag.slim</string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>entity.other.attribute-name.event.slim</string>
+						</dict>
+					</dict>
+					<key>comment</key>
+					<string>Inline HTML / 1 - colon; 2 - dot OR hash OR any combination of word, number; 3 - OPTIONAL any combination of word, number, dash or underscore (following a . or</string>
+					<key>end</key>
+					<string>$|(?!\.|#|=|:|-|~|/|\}|\]|\*|\s?[\*\{])</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#tag-class-id-attribute</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#normal-html-tag</string>
+						</dict>
+					</array>
+				</dict>
 				<dict>
 					<key>include</key>
 					<string>#tag-class-id-attribute</string>
@@ -643,7 +666,7 @@
 			<key>contentName</key>
 			<string>source.ruby.embedded.slim</string>
 			<key>end</key>
-			<string>(?&lt;!\\|,)$</string>
+			<string>(?&lt;!\\|,|,\n|\\\n)$</string>
 			<key>name</key>
 			<string>meta.line.ruby.slim</string>
 			<key>patterns</key>
