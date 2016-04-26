@@ -1,6 +1,5 @@
 /Comment
 / Space comment
-/ TODO Comment blocks don't highlight https://github.com/slim-template/ruby-slim.tmbundle/issues/38
 / Nested Comment
   Comment
 // Comment
@@ -58,9 +57,6 @@ div constant=nil
 / Ruby attributes
 div dynamic-value=ruby_variable
 div dynamic-value=ruby_variable(with: args, and: 'strings')
-/ TODO https://github.com/slim-template/ruby-slim.tmbundle/issues/47 but also keep in mind https://github.com/slim-template/ruby-slim.tmbundle/issues/53
-div dynamic-value=ruby_variable(with: args,\
-  and: 'strings')
 
 / Attribute wrapping
 div(bracket="attributes" multiple="attributes")
@@ -96,7 +92,6 @@ span> attribute="value" After
 span.class<> Both
 
 / Quote
-/ https://github.com/slim-template/ruby-slim.tmbundle/issues/20
 span This is a ' line with a single quote
 span.klass This is a ' line with a single 'quote'
 span.klass attribute="value" This is a ' line with a single unescaped quote
