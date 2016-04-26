@@ -264,7 +264,7 @@ repository:
     - include: '#continuation'
     - include: source.ruby.rails
   string-double-quoted:
-    begin: '"'
+    begin: (?<==)"
     beginCaptures:
       '0':
         name: punctuation.definition.string.begin.html
@@ -278,7 +278,7 @@ repository:
     - include: '#embedded-ruby'
     - include: '#entities'
   string-single-quoted:
-    begin: ''''
+    begin: (?<==)'
     beginCaptures:
       '0':
         name: punctuation.definition.string.begin.html

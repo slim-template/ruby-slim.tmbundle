@@ -76,7 +76,7 @@ div attribute=:value1,value2
 
 / Splats
 #splat*{ 'attribute' => 'value'}
-#splat*{attribute: 'value'}
+#splat *{attribute: 'value'}
 / TODO * is incorrectly colored
 #splat *@variable
 #splat *variable
@@ -94,6 +94,18 @@ div attribute="#{variable if amount > 0} extra-text"
 span< Before
 span> attribute="value" After
 span.class<> Both
+
+/ Quote
+/ https://github.com/slim-template/ruby-slim.tmbundle/issues/20
+span This is a ' line with a single quote
+span.klass This is a ' line with a single 'quote'
+span.klass attribute="value" This is a ' line with a single unescaped quote
+span.klass Additional code shouldn't be highlighted
+
+span This is a " line with a double quote
+span.klass This is a " line with a double "quote"
+span.klass attribute="value" This is a " line with a double unescaped quote
+span.klass Additional code shouldn"t be highlighted
 
 / Inline
 h2: span Text

@@ -375,7 +375,7 @@
 					<key>comment</key>
 					<string>Inline HTML / 1 - colon; 2 - dot OR hash OR any combination of word, number; 3 - OPTIONAL any combination of word, number, dash or underscore (following a . or</string>
 					<key>end</key>
-					<string>$|(?!\.|#|=|:|-|~|/|\}|\]|\*|\s?[\*\{])</string>
+					<string>$|(?!\.|#|=|-|~|/|\}|\]|\*|\s?[\*\{])</string>
 					<key>patterns</key>
 					<array>
 						<dict>
@@ -692,7 +692,7 @@
 		<key>string-double-quoted</key>
 		<dict>
 			<key>begin</key>
-			<string>"</string>
+			<string>(?&lt;==)"</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>0</key>
@@ -730,7 +730,7 @@
 		<key>string-single-quoted</key>
 		<dict>
 			<key>begin</key>
-			<string>'</string>
+			<string>(?&lt;==)'</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>0</key>
