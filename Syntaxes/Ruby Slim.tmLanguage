@@ -382,10 +382,6 @@
 					</array>
 				</dict>
 				<dict>
-					<key>include</key>
-					<string>#tag-class-id-attribute</string>
-				</dict>
-				<dict>
 					<key>begin</key>
 					<string>(\*\{)(?=.*\}|.*\|\s*$)</string>
 					<key>beginCaptures</key>
@@ -417,6 +413,10 @@
 							<string>#embedded-ruby</string>
 						</dict>
 					</array>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#tag-class-id-attribute</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -598,7 +598,7 @@
 		<key>normal-html-tag</key>
 		<dict>
 			<key>begin</key>
-			<string>([\w.#_-]+)=(true|false|nil)?</string>
+			<string>([\w.#_-]+)=(?!\s)(true|false|nil)?</string>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
@@ -655,7 +655,7 @@
 		<key>rubyline</key>
 		<dict>
 			<key>begin</key>
-			<string>(==|=)(&lt;&gt;|&gt;&lt;|&lt;'|'&lt;|&lt;|&gt;|')?|-</string>
+			<string>(==|=)(&lt;&gt;|&gt;&lt;|&lt;'|'&lt;|&lt;|&gt;)?|-</string>
 			<key>contentName</key>
 			<string>source.ruby.embedded.slim</string>
 			<key>end</key>
@@ -685,7 +685,7 @@
 		<key>string-double-quoted</key>
 		<dict>
 			<key>begin</key>
-			<string>(?&lt;==)"</string>
+			<string>(")(?=.*")</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>0</key>
@@ -723,7 +723,7 @@
 		<key>string-single-quoted</key>
 		<dict>
 			<key>begin</key>
-			<string>(?&lt;==)'</string>
+			<string>(')(?=.*')</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>0</key>
@@ -776,39 +776,6 @@
 			<key>match</key>
 			<string>(\.|#)([\w\d-_]+)</string>
 		</dict>
-		<key>tag-id-attribute</key>
-		<dict>
-			<key>begin</key>
-			<string>\b(id)\b\s*(=)</string>
-			<key>captures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>entity.other.attribute-name.id.html</string>
-				</dict>
-				<key>2</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.separator.key-value.html</string>
-				</dict>
-			</dict>
-			<key>end</key>
-			<string>(?&lt;='|")</string>
-			<key>name</key>
-			<string>meta.attribute-with-value.id.html</string>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>include</key>
-					<string>#string-double-quoted</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#string-single-quoted</string>
-				</dict>
-			</array>
-		</dict>
 		<key>tag-stuff</key>
 		<dict>
 			<key>patterns</key>
@@ -816,10 +783,6 @@
 				<dict>
 					<key>include</key>
 					<string>#normal-html-tag</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#tag-id-attribute</string>
 				</dict>
 				<dict>
 					<key>include</key>

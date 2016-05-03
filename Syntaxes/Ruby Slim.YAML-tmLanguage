@@ -150,7 +150,6 @@ patterns:
     patterns:
     - include: '#tag-class-id-attribute'
     - include: '#normal-html-tag'
-  - include: '#tag-class-id-attribute'
   - begin: (\*\{)(?=.*\}|.*\|\s*$)
     end: (\})|$|^(?!.*\|\s*$)
     name: source.ruby.embedded.slim
@@ -163,6 +162,7 @@ patterns:
         name: punctuation.section.embedded.ruby
     patterns:
     - include: '#embedded-ruby'
+  - include: '#tag-class-id-attribute'
   - include: '#rubyline'
   - match: /
     name: punctuation.terminator.tag.slim
@@ -231,7 +231,7 @@ repository:
     end: \s|\w$
     name: source.ruby.embedded.html
   normal-html-tag:
-    begin: ([\w.#_-]+)=(true|false|nil)?
+    begin: ([\w.#_-]+)=(?!\s)(true|false|nil)?
     captures:
       '1':
         name: entity.other.attribute-name.event.slim
@@ -251,7 +251,7 @@ repository:
     patterns:
     - include: '#tag-stuff'
   rubyline:
-    begin: (==|=)(<>|><|<'|'<|<|>|')?|-
+    begin: (==|=)(<>|><|<'|'<|<|>)?|-
     contentName: source.ruby.embedded.slim
     end: (?<!\\|,|,\n|\\\n)$
     name: meta.line.ruby.slim
@@ -262,7 +262,7 @@ repository:
     - include: '#continuation'
     - include: source.ruby.rails
   string-double-quoted:
-    begin: (?<==)"
+    begin: (")(?=.*")
     beginCaptures:
       '0':
         name: punctuation.definition.string.begin.html
@@ -276,7 +276,7 @@ repository:
     - include: '#embedded-ruby'
     - include: '#entities'
   string-single-quoted:
-    begin: (?<==)'
+    begin: (')(?=.*')
     beginCaptures:
       '0':
         name: punctuation.definition.string.begin.html
@@ -296,22 +296,9 @@ repository:
         name: punctuation.separator.key-value.html
       '2':
         name: entity.other.attribute-name.html
-  tag-id-attribute:
-    begin: \b(id)\b\s*(=)
-    captures:
-      '1':
-        name: entity.other.attribute-name.id.html
-      '2':
-        name: punctuation.separator.key-value.html
-    end: (?<='|")
-    name: meta.attribute-with-value.id.html
-    patterns:
-    - include: '#string-double-quoted'
-    - include: '#string-single-quoted'
   tag-stuff:
     patterns:
     - include: '#normal-html-tag'
-    - include: '#tag-id-attribute'
     - include: '#interpolated-ruby'
     - include: '#delimited-ruby-a'
     - include: '#delimited-ruby-b'
