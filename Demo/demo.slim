@@ -56,7 +56,8 @@ div constant=nil
 
 / Ruby attributes
 div dynamic-value=ruby_variable
-div dynamic-value=ruby_variable(with: args, and: 'strings')
+/ TODO highlight Ruby variables when they're attribute values
+div dynamic-value=ruby_variable(with: args, and: 'strings') text available here for it is Ruby no more
 
 / Attribute wrapping
 div(bracket="attributes" multiple="attributes")
@@ -112,7 +113,10 @@ h2: span.class attributes="value" Text
 .with-class.double-class: .class-and.additional.class attrubute="value" Text here
 
 / Ruby
+p Words with Ruby reserved words like for or in (for)
 - array.each do |item|
+  - if true
+  - else
 == render 'this', locals: { attribute: 'value' }
 h1 = yield :yield_sym
 = app_helper('string', sym: 'value', class: 'value')

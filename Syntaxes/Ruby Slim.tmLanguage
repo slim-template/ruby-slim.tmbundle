@@ -301,7 +301,20 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>(?==+|-|~)</string>
+			<string>^\s*(?=-)</string>
+			<key>end</key>
+			<string>$</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#rubyline</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>begin</key>
+			<string>(?==+|~)</string>
 			<key>end</key>
 			<string>$</string>
 			<key>patterns</key>
@@ -416,11 +429,11 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#tag-class-id-attribute</string>
+					<string>#rubyline</string>
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#rubyline</string>
+					<string>#tag-class-id-attribute</string>
 				</dict>
 				<dict>
 					<key>match</key>
@@ -598,7 +611,7 @@
 		<key>normal-html-tag</key>
 		<dict>
 			<key>begin</key>
-			<string>([\w.#_-]+)=(?!\s)(true|false|nil)?</string>
+			<string>([\w.#_-]+)=(?!\s)(true|false|nil)?(?=\(|\{)?</string>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
@@ -613,7 +626,7 @@
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>$</string>
+			<string>\}|\)|$</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -627,28 +640,6 @@
 				<dict>
 					<key>include</key>
 					<string>#string-single-quoted</string>
-				</dict>
-			</array>
-		</dict>
-		<key>normal-inline-html-tag</key>
-		<dict>
-			<key>begin</key>
-			<string>([\w.#_-]+)</string>
-			<key>captures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>entity.name.tag.slim</string>
-				</dict>
-			</dict>
-			<key>end</key>
-			<string>$</string>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>include</key>
-					<string>#tag-stuff</string>
 				</dict>
 			</array>
 		</dict>
