@@ -128,7 +128,7 @@ patterns:
   patterns:
   - include: '#rubyline'
 
-- include: '#normal-html-tag'
+- include: '#tag-attribute'
 - include: '#embedded-ruby'
 
 - begin: ^\s*(\.|#|[a-zA-Z0-9]+)([\w-]+)?
@@ -142,6 +142,11 @@ patterns:
       name: entity.other.attribute-name.event.slim
 
   patterns:
+  - begin: (:[\w\d]+)+
+    end: $|\s
+    comment: XML
+    name: entity.name.tag.slim
+
   - begin: (:\s)(\.|#|[a-zA-Z0-9]+)([\w-]+)?
     end: $|(?!\.|#|=|-|~|/|\}|\]|\*|\s?[\*\{])
     comment: Inline HTML / 1 - colon; 2 - dot OR hash OR any combination of word, number; 3 - OPTIONAL any combination of word, number, dash or underscore (following a . or #)
@@ -153,8 +158,8 @@ patterns:
       '3':
         name: entity.other.attribute-name.event.slim
     patterns:
-    - include: '#tag-class-id-attribute'
-    - include: '#normal-html-tag'
+    - include: '#root-class-id-tag'
+    - include: '#tag-attribute'
   - begin: (\*\{)(?=.*\}|.*\|\s*$)
     end: (\})|$|^(?!.*\|\s*$)
     name: source.ruby.embedded.slim
@@ -167,7 +172,7 @@ patterns:
         name: punctuation.section.embedded.ruby
     patterns:
     - include: '#embedded-ruby'
-  - include: '#tag-class-id-attribute'
+  - include: '#root-class-id-tag'
   - include: '#rubyline'
   - match: /
     name: punctuation.terminator.tag.slim
@@ -182,6 +187,12 @@ patterns:
 
   patterns:
   - include: '#embedded-ruby'
+  - include: text.html.basic
+
+- begin: (?=<[\w\d\:]+)
+  end: $|\/\>
+  comment: Inline and root-level HTML tags
+  patterns:
   - include: text.html.basic
 
 repository:
@@ -235,8 +246,8 @@ repository:
     begin: =(?=\b)
     end: \s|\w$
     name: source.ruby.embedded.html
-  normal-html-tag:
-    begin: ([\w.#_-]+)=(?!\s)(true|false|nil)?(?=\(|\{)?
+  tag-attribute:
+    begin: ([\w.#_-]+)=(?!\s)(true|false|nil)?(\s*\(|\{)?
     captures:
       '1':
         name: entity.other.attribute-name.event.slim
@@ -286,8 +297,8 @@ repository:
     patterns:
     - include: '#embedded-ruby'
     - include: '#entities'
-  tag-class-id-attribute:
-    match: (\.|#)([\w\d-_]+)
+  root-class-id-tag:
+    match: (\.|#)([\w\d\-]+)
     captures:
       '1':
         name: punctuation.separator.key-value.html
@@ -295,7 +306,7 @@ repository:
         name: entity.other.attribute-name.html
   tag-stuff:
     patterns:
-    - include: '#normal-html-tag'
+    - include: '#tag-attribute'
     - include: '#interpolated-ruby'
     - include: '#delimited-ruby-a'
     - include: '#delimited-ruby-b'

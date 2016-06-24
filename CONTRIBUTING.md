@@ -1,0 +1,1 @@
+Do **not** edit [`Ruby Slim.tmLanguage`](Syntaxes/Ruby Slim.tmLanguage) directly. Add patches to [`Ruby Slim.YAML-tmLanguage`](Syntaxes/Ruby Slim.YAML-tmLanguage) and Convert to Property List using the [Sublime Package Dev](https://github.com/SublimeText/PackageDev). Commit both files.

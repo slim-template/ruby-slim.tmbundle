@@ -42,6 +42,7 @@ section.-leading-dash
 .underscore_class
 .underscoreunderscore__class
 .-leading-dash
+._leading_underscore
 
 / Attributes
 div quoted="attribute"
@@ -60,6 +61,9 @@ div dynamic-value=ruby_variable
 div dynamic-value=ruby_variable(with: args, and: 'strings') text available here for it is Ruby no more
 
 / Attribute wrapping
+div [attibute="this"]
+/ TODO should support spaces around attribute name and value
+div [ attibute = "this" ] This is text
 div(bracket="attributes" multiple="attributes")
 div[bracket="attributes" multiple="attributes"]
 div [ bracket="attributes" multiple="attributes" ]
@@ -69,11 +73,12 @@ div[bracket="attributes"
 
 / Attribute merging
 div attribute=['value1', 'value2']
+/ TODO highlight attribute merging
 div attribute=:value1,value2
 
 / Splats
 #splat*{ 'attribute' => 'value'}
-#splat *{attribute: 'value'}
+#splat *{attribute: 'value'} Regular text
 / TODO * is incorrectly colored
 #splat *@variable
 #splat *variable
@@ -112,6 +117,11 @@ h2: span.class attributes="value" Text
 .with-class: .single-class data-attribute="value" Text
 .with-class.double-class: .class-and.additional.class attrubute="value" Text here
 
+/ XML
+loc:url .this is="attr" this is text Title
+/ TODO second colon should highlight as a punctuation.definition.tag.end.slim
+loc:url: .this is="attr" this is text Title
+
 / Ruby
 p Words with Ruby reserved words like for or in (for)
 - array.each do |item|
@@ -148,10 +158,10 @@ article
 
 / HTML
 
-/ TODO HTML tags don't highlight at root level or within elements
-.inline Text <normal html_tag="this"><and this="this"> Text
+/ TODO HTML attributes with underscores don't highlight properly - might be something with the text.html source?
+.inline Text <normal html_underscore_value="value" normal="attribute" html-dash-attribute="value"><and this="this"> Text</normal>
 | <tag dash-attribute="this"><tag:with:colon this="this">
-<normal class="html-tag">
+<normal class="html-tag" underscore_attribute="value" normal-dash-attribute="value">
 
 / Embedded Engines
 

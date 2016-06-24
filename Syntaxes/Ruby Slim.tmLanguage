@@ -327,7 +327,7 @@
 		</dict>
 		<dict>
 			<key>include</key>
-			<string>#normal-html-tag</string>
+			<string>#tag-attribute</string>
 		</dict>
 		<dict>
 			<key>include</key>
@@ -359,6 +359,16 @@
 			<array>
 				<dict>
 					<key>begin</key>
+					<string>(:[\w\d]+)+</string>
+					<key>comment</key>
+					<string>XML</string>
+					<key>end</key>
+					<string>$|\s</string>
+					<key>name</key>
+					<string>entity.name.tag.slim</string>
+				</dict>
+				<dict>
+					<key>begin</key>
 					<string>(:\s)(\.|#|[a-zA-Z0-9]+)([\w-]+)?</string>
 					<key>captures</key>
 					<dict>
@@ -386,11 +396,11 @@
 					<array>
 						<dict>
 							<key>include</key>
-							<string>#tag-class-id-attribute</string>
+							<string>#root-class-id-tag</string>
 						</dict>
 						<dict>
 							<key>include</key>
-							<string>#normal-html-tag</string>
+							<string>#tag-attribute</string>
 						</dict>
 					</array>
 				</dict>
@@ -429,11 +439,11 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#rubyline</string>
+					<string>#root-class-id-tag</string>
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#tag-class-id-attribute</string>
+					<string>#rubyline</string>
 				</dict>
 				<dict>
 					<key>match</key>
@@ -466,6 +476,21 @@
 					<key>include</key>
 					<string>#embedded-ruby</string>
 				</dict>
+				<dict>
+					<key>include</key>
+					<string>text.html.basic</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>begin</key>
+			<string>(?=&lt;[\w\d\:]+)</string>
+			<key>comment</key>
+			<string>Inline and root-level HTML tags</string>
+			<key>end</key>
+			<string>$|\/\&gt;</string>
+			<key>patterns</key>
+			<array>
 				<dict>
 					<key>include</key>
 					<string>text.html.basic</string>
@@ -608,40 +633,23 @@
 			<key>name</key>
 			<string>source.ruby.embedded.html</string>
 		</dict>
-		<key>normal-html-tag</key>
+		<key>root-class-id-tag</key>
 		<dict>
-			<key>begin</key>
-			<string>([\w.#_-]+)=(?!\s)(true|false|nil)?(?=\(|\{)?</string>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>entity.other.attribute-name.event.slim</string>
+					<string>punctuation.separator.key-value.html</string>
 				</dict>
 				<key>2</key>
 				<dict>
 					<key>name</key>
-					<string>constant.language.slim</string>
+					<string>entity.other.attribute-name.html</string>
 				</dict>
 			</dict>
-			<key>end</key>
-			<string>\}|\)|$</string>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>include</key>
-					<string>#tag-stuff</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#string-double-quoted</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#string-single-quoted</string>
-				</dict>
-			</array>
+			<key>match</key>
+			<string>(\.|#)([\w\d\-]+)</string>
 		</dict>
 		<key>rubyline</key>
 		<dict>
@@ -749,23 +757,40 @@
 				</dict>
 			</array>
 		</dict>
-		<key>tag-class-id-attribute</key>
+		<key>tag-attribute</key>
 		<dict>
+			<key>begin</key>
+			<string>([\w.#_-]+)=(?!\s)(true|false|nil)?(\s*\(|\{)?</string>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.separator.key-value.html</string>
+					<string>entity.other.attribute-name.event.slim</string>
 				</dict>
 				<key>2</key>
 				<dict>
 					<key>name</key>
-					<string>entity.other.attribute-name.html</string>
+					<string>constant.language.slim</string>
 				</dict>
 			</dict>
-			<key>match</key>
-			<string>(\.|#)([\w\d-_]+)</string>
+			<key>end</key>
+			<string>\}|\)|$</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#tag-stuff</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#string-double-quoted</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#string-single-quoted</string>
+				</dict>
+			</array>
 		</dict>
 		<key>tag-stuff</key>
 		<dict>
@@ -773,7 +798,7 @@
 			<array>
 				<dict>
 					<key>include</key>
-					<string>#normal-html-tag</string>
+					<string>#tag-attribute</string>
 				</dict>
 				<dict>
 					<key>include</key>
