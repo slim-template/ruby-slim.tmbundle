@@ -136,7 +136,7 @@
 			<array>
 				<dict>
 					<key>include</key>
-					<string>source.md</string>
+					<string>text.html.markdown</string>
 				</dict>
 			</array>
 		</dict>
