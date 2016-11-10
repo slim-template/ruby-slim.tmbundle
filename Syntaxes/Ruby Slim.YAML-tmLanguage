@@ -131,7 +131,7 @@ patterns:
 - include: '#tag-attribute'
 - include: '#embedded-ruby'
 
-- begin: ^\s*(\.|#|[a-zA-Z0-9]+)([\w-]+)?
+- begin: ^\s*(\.|#|[-a-zA-Z0-9]+)([\w-]+)?
   end: $|(?!\.|#|=|:|-|~|/|\}|\]|\*|\s?[\*\{])
   name: meta.tag
   comment: 1 - dot OR hash OR any combination of word, number; 2 - OPTIONAL any combination of word, number, dash or underscore (following a . or #)

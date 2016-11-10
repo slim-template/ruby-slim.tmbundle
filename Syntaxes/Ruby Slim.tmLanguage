@@ -335,7 +335,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>^\s*(\.|#|[a-zA-Z0-9]+)([\w-]+)?</string>
+			<string>^\s*(\.|#|[-a-zA-Z0-9]+)([\w-]+)?</string>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
