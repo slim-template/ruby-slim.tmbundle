@@ -20,7 +20,7 @@ patterns:
     '2':
       name: constant.language.name.javascript.filter.slim
   end: ^(?!(\1\s)|\s*$)
-  name: text.javascript.filter.slim
+  name: source.js.filter.slim
   patterns:
   - include: source.js
 

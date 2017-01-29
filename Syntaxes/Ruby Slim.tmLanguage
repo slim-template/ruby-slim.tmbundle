@@ -54,7 +54,7 @@
 			<key>end</key>
 			<string>^(?!(\1\s)|\s*$)</string>
 			<key>name</key>
-			<string>text.javascript.filter.slim</string>
+			<string>source.js.filter.slim</string>
 			<key>patterns</key>
 			<array>
 				<dict>
