@@ -274,14 +274,14 @@
 			<string>^(\s*)(/)\s*.*$</string>
 			<key>beginCaptures</key>
 			<dict>
-				<key>1</key>
+				<key>2</key>
 				<dict>
 					<key>name</key>
 					<string>punctuation.section.comment.slim</string>
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>^(?!\1  )</string>
+			<string>^(?!(\1\s)|\s*$)</string>
 			<key>name</key>
 			<string>comment.block.slim</string>
 		</dict>
