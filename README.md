@@ -1,4 +1,6 @@
-# Slim TextMate/Sublime Bundle [![endorse](http://api.coderwall.com/fredwu/endorsecount.png)](http://coderwall.com/fredwu)
+# Slim TextMate/Sublime Bundle
+
+## Looking for maintainer(s)! See [this issue](https://github.com/slim-template/ruby-slim.tmbundle/issues/73).
 
 ## Description
 
