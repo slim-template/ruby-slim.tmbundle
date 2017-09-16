@@ -277,27 +277,13 @@
 				<key>2</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.section.comment.slim</string>
+					<string>comment.line.slash.slim</string>
 				</dict>
 			</dict>
 			<key>end</key>
 			<string>^(?!(\1\s)|\s*$)</string>
 			<key>name</key>
 			<string>comment.block.slim</string>
-		</dict>
-		<dict>
-			<key>captures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.section.comment.slim</string>
-				</dict>
-			</dict>
-			<key>match</key>
-			<string>^\s*(/)\s*\S.*$\n?</string>
-			<key>name</key>
-			<string>comment.line.slash.slim</string>
 		</dict>
 		<dict>
 			<key>begin</key>

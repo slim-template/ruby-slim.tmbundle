@@ -108,15 +108,9 @@ patterns:
 - begin: ^(\s*)(/)\s*.*$
   beginCaptures:
     '2':
-      name: punctuation.section.comment.slim
+      name: comment.line.slash.slim
   end: ^(?!(\1\s)|\s*$)
   name: comment.block.slim
-
-- captures:
-    '1':
-      name: punctuation.section.comment.slim
-  match: ^\s*(/)\s*\S.*$\n?
-  name: comment.line.slash.slim
 
 - begin: ^\s*(?=-)
   end: $
