@@ -52,7 +52,7 @@ patterns:
   end: ^(?!(\1\s)|\s*$)
   name: text.markdown.filter.slim
   patterns:
-  - include: source.md
+  - include: text.html.markdown
 
 - begin: ^(\s*)(css):$
   beginCaptures:
