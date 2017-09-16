@@ -107,9 +107,9 @@ patterns:
 
 - begin: ^(\s*)(/)\s*.*$
   beginCaptures:
-    '1':
+    '2':
       name: punctuation.section.comment.slim
-  end: ^(?!\1  )
+  end: ^(?!(\1\s)|\s*$)
   name: comment.block.slim
 
 - captures:
