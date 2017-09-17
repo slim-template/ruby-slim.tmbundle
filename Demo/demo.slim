@@ -28,6 +28,7 @@ section.dashdash--class
 section.underscore_class
 section.underscoreunderscore__class
 section.-leading-dash
+section-with-dashes.class
 
 / ID and Class Shortcut
 
@@ -131,10 +132,16 @@ p Words with Ruby reserved words like for or in (for)
 h1 = yield :yield_sym
 = app_helper('string', sym: 'value', class: 'value')
 p = app_helper('string', sym: 'value')
-- content_for :hello_slim do
+- content_for :hello_slim do |this|
   p.class
   p = @hello
   p Regular
+
+/ Without block
+- content_for :hello_slim do
+  p.class
+  p = @hello
+
 == render 'multiline',
   with: 'locals',
   and: :symbols

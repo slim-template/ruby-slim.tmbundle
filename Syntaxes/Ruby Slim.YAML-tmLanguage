@@ -262,7 +262,11 @@ repository:
   rubyline:
     begin: (==|=)(<>|><|<'|'<|<|>)?|-
     contentName: source.ruby.embedded.slim
-    end: (?<!\\|,|,\n|\\\n)$
+    comment: Hack to thwart Sublime's Ruby highlighter. It thinks do without a variable continues the next line (this can be muted with a / at the end of the line). For things like yields, do is unnecessary without an argument, so this hack will suffice
+    end: (do\s*\n$)|(?<!\\|,|,\n|\\\n)$
+    endCaptures:
+      '1':
+        name: keyword.control.start-block.ruby
     name: meta.line.ruby.slim
     patterns:
     - comment: Hack to let ruby comments work in this context properly

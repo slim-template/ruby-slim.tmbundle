@@ -663,7 +663,15 @@
 			<key>contentName</key>
 			<string>source.ruby.embedded.slim</string>
 			<key>end</key>
-			<string>(?&lt;!\\|,|,\n|\\\n)$</string>
+			<string>(do\s*\n$)|(?&lt;!\\|,|,\n|\\\n)$</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.start-block.ruby</string>
+				</dict>
+			</dict>
 			<key>name</key>
 			<string>meta.line.ruby.slim</string>
 			<key>patterns</key>
