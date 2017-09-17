@@ -321,9 +321,9 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>(\s*)\|\s*</string>
+			<string>(\s*)(\||')\s*</string>
 			<key>comment</key>
-			<string>Verbatim text (can include inline HTML tags and nested content)</string>
+			<string>Verbatim text (can include HTML tags and copied lines)</string>
 			<key>end</key>
 			<string>^(?!(\1\s)|\s*$)</string>
 			<key>patterns</key>
@@ -334,7 +334,7 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#tag-stuff</string>
+					<string>#embedded-ruby</string>
 				</dict>
 			</array>
 		</dict>
@@ -357,7 +357,7 @@
 			<key>comment</key>
 			<string>1 - dot OR hash OR any combination of word, number; 2 - OPTIONAL any combination of word, number, dash or underscore (following a . or</string>
 			<key>end</key>
-			<string>$|(?!\.|#|=|:|-|~|/|\}|\]|\*|\s?[\*\{])</string>
+			<string>$|(?!\.|#|:|-|~|/|\}|\]|\*|\s?[\*\{])</string>
 			<key>name</key>
 			<string>meta.tag</string>
 			<key>patterns</key>
@@ -660,6 +660,8 @@
 		<dict>
 			<key>begin</key>
 			<string>(==|=)(&lt;&gt;|&gt;&lt;|&lt;'|'&lt;|&lt;|&gt;)?|-</string>
+			<key>comment</key>
+			<string>Hack to thwart Sublime's Ruby highlighter. It thinks do without a variable continues the next line (this can be muted with a / at the end of the line). For things like yields, do is unnecessary without an argument, so this hack will suffice</string>
 			<key>contentName</key>
 			<string>source.ruby.embedded.slim</string>
 			<key>end</key>
@@ -773,7 +775,7 @@
 		<key>tag-attribute</key>
 		<dict>
 			<key>begin</key>
-			<string>([\w.#_-]+)=(?!\s)(true|false|nil)?(\s*\(|\{)?</string>
+			<string>([\w.#_-]+)(=)(?!\s)(true|false|nil)?(\s*\(|\{)?</string>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
@@ -784,11 +786,18 @@
 				<key>2</key>
 				<dict>
 					<key>name</key>
+					<string>punctuation.separator.key-value.html</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
 					<string>constant.language.slim</string>
 				</dict>
 			</dict>
 			<key>end</key>
 			<string>\}|\)|$</string>
+			<key>name</key>
+			<string>meta.attribute-with-value.slim</string>
 			<key>patterns</key>
 			<array>
 				<dict>

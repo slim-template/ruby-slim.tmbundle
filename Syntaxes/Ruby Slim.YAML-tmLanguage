@@ -125,15 +125,15 @@ patterns:
 - include: '#tag-attribute'
 - include: '#embedded-ruby'
 
-- begin: (\s*)\|\s*
+- begin: (\s*)(\||')\s*
   end: ^(?!(\1\s)|\s*$)
-  comment: Verbatim text (can include inline HTML tags and nested content)
+  comment: Verbatim text (can include HTML tags and copied lines)
   patterns:
   - include: text.html.basic
-  - include: '#tag-stuff'
+  - include: '#embedded-ruby'
 
 - begin: ^\s*(\.|#|[-a-zA-Z0-9]+)([\w-]+)?
-  end: $|(?!\.|#|=|:|-|~|/|\}|\]|\*|\s?[\*\{])
+  end: $|(?!\.|#|:|-|~|/|\}|\]|\*|\s?[\*\{])
   name: meta.tag
   comment: 1 - dot OR hash OR any combination of word, number; 2 - OPTIONAL any combination of word, number, dash or underscore (following a . or #)
   captures:
@@ -248,11 +248,14 @@ repository:
     end: \s|\w$
     name: source.ruby.embedded.html
   tag-attribute:
-    begin: ([\w.#_-]+)=(?!\s)(true|false|nil)?(\s*\(|\{)?
+    begin: ([\w.#_-]+)(=)(?!\s)(true|false|nil)?(\s*\(|\{)?
+    name: meta.attribute-with-value.slim
     captures:
       '1':
         name: entity.other.attribute-name.event.slim
       '2':
+        name: punctuation.separator.key-value.html
+      '3':
         name: constant.language.slim
     end: \}|\)|$
     patterns:
@@ -262,8 +265,8 @@ repository:
   rubyline:
     begin: (==|=)(<>|><|<'|'<|<|>)?|-
     contentName: source.ruby.embedded.slim
-    comment: Hack to thwart Sublime's Ruby highlighter. It thinks do without a variable continues the next line (this can be muted with a / at the end of the line). For things like yields, do is unnecessary without an argument, so this hack will suffice
     end: (do\s*\n$)|(?<!\\|,|,\n|\\\n)$
+    comment: Hack to thwart Sublime's Ruby highlighter. It thinks do without a variable continues the next line (this can be muted with a / at the end of the line). For things like yields, do is unnecessary without an argument, so this hack will suffice
     endCaptures:
       '1':
         name: keyword.control.start-block.ruby

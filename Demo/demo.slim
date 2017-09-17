@@ -52,7 +52,7 @@ div dash-attribute='attribute'
 div.class with-attribute="attribute"
 div.class with-attribute="attribute\
   multiple lines"
-div constant=true
+div= ruby_var_with_no_space_from_tag
 div constant=false
 div constant=nil
 
@@ -152,20 +152,21 @@ p = app_helper('string', sym: 'value')
 / Verbatim
 article
   | Opening text
-
-/ TODO https://github.com/slim-template/ruby-slim.tmbundle/issues/59
-|
-  Other text
-  Other text
-
+    Copy line
+    #{interpolated_ruby / 2}
 - if true
   | console.log("foo");
 - else
   | console.log("bar");
 
+div
+  'Verbatim text with space after
+    a inline text that's "quoted"
+    <a href="#">HTML</a>
+    a href="slim" unhighlighted slim
+
 / HTML
 
-/ TODO HTML attributes with underscores don't highlight properly - might be something with the text.html source?
 .inline Text <normal html_underscore_value="value" normal="attribute" html-dash-attribute="value"><and this="this"> Text</normal>
 | <tag dash-attribute="this"><tag:with:colon this="this">
 <normal class="html-tag" underscore_attribute="value" normal-dash-attribute="value">
