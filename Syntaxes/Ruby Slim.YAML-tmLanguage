@@ -125,7 +125,7 @@ patterns:
 - include: '#tag-attribute'
 - include: '#embedded-ruby'
 
-- begin: (\s*)(\||')\s*
+- begin: ^(\s*)(\||')\s*
   end: ^(?!(\1\s)|\s*$)
   comment: Verbatim text (can include HTML tags and copied lines)
   patterns:

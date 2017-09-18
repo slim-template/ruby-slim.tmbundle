@@ -321,7 +321,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>(\s*)(\||')\s*</string>
+			<string>^(\s*)(\||')\s*</string>
 			<key>comment</key>
 			<string>Verbatim text (can include HTML tags and copied lines)</string>
 			<key>end</key>
