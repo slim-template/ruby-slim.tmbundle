@@ -1,6 +1,5 @@
 # Slim TextMate/Sublime Bundle
 
-## Looking for maintainer(s)! See [this issue](https://github.com/slim-template/ruby-slim.tmbundle/issues/73).
 
 ## Description
 
